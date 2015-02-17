@@ -99,6 +99,9 @@ class Google extends AbstractService
     // Android Publisher
     const SCOPE_ANDROID_PUBLISHER           = 'https://www.googleapis.com/auth/androidpublisher';
 
+    // Gmail
+    const SCOPE_GMAIL_READ = 'https://www.googleapis.com/auth/gmail.readonly';
+
     protected $accessType = 'online';
 
 
