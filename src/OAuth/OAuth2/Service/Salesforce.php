@@ -21,6 +21,16 @@ class SalesforceService extends AbstractService
     const   SCOPE_API           =   'api',
             SCOPE_REFRESH_TOKEN =   'refresh_token';
 
+    public function __construct(
+        CredentialsInterface $credentials,
+        ClientInterface $httpClient,
+        TokenStorageInterface $storage,
+        $scopes = array(),
+        UriInterface $baseApiUri = null
+    ) {
+        parent::__construct($credentials, $httpClient, $storage, $scopes, $baseApiUri, true);
+    }
+
     /**
      * {@inheritdoc}
      */
