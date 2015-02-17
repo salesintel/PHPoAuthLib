@@ -6,6 +6,10 @@ use OAuth\OAuth2\Token\StdOAuth2Token;
 use OAuth\Common\Http\Exception\TokenResponseException;
 use OAuth\OAuth2\Service\Exception\InvalidAccessTypeException;
 use OAuth\Common\Http\Uri\Uri;
+use OAuth\Common\Consumer\CredentialsInterface;
+use OAuth\Common\Http\Client\ClientInterface;
+use OAuth\Common\Storage\TokenStorageInterface;
+use OAuth\Common\Http\Uri\UriInterface;
 
 class Google extends AbstractService
 {
@@ -103,6 +107,16 @@ class Google extends AbstractService
     const SCOPE_GMAIL_READ = 'https://www.googleapis.com/auth/gmail.readonly';
 
     protected $accessType = 'online';
+
+    public function __construct(
+        CredentialsInterface $credentials,
+        ClientInterface $httpClient,
+        TokenStorageInterface $storage,
+        $scopes = array(),
+        UriInterface $baseApiUri = null
+    ) {
+        parent::__construct($credentials, $httpClient, $storage, $scopes, $baseApiUri, true);
+    }
 
 
     public function setAccessType($accessType)
